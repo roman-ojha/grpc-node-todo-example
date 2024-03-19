@@ -8,6 +8,8 @@
   "scripts": {
     "dev:client": "nodemon --exec ts-node ./client/index.ts",
     "dev:server": "nodemon --exec ts-node ./server/index.ts",
+    "start:client": "ts-node ./client/index.ts",
+    "start:server": "ts-node ./server/index.ts",
     "proto-gen": "sh proto/build.sh",
     "proto-lint": "cd proto && buf lint"
   },

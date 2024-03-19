@@ -17,6 +17,8 @@ export interface ProtoGrpcType {
         AddTodoStreamItemsResponse: MessageTypeDefinition
         AddTodoStreamItemsStreamReturnRequest: MessageTypeDefinition
         AddTodoStreamItemsStreamReturnResponse: MessageTypeDefinition
+        AddUserRequest: MessageTypeDefinition
+        AddUserResponse: MessageTypeDefinition
         GetTodoItemsRequest: MessageTypeDefinition
         GetTodoItemsResponse: MessageTypeDefinition
         GetTodoItemsStreamRequest: MessageTypeDefinition

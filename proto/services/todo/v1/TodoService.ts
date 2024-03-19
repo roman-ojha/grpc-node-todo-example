@@ -8,6 +8,8 @@ import type { AddTodoStreamItemsRequest as _services_todo_v1_AddTodoStreamItemsR
 import type { AddTodoStreamItemsResponse as _services_todo_v1_AddTodoStreamItemsResponse, AddTodoStreamItemsResponse__Output as _services_todo_v1_AddTodoStreamItemsResponse__Output } from '../../../services/todo/v1/AddTodoStreamItemsResponse';
 import type { AddTodoStreamItemsStreamReturnRequest as _services_todo_v1_AddTodoStreamItemsStreamReturnRequest, AddTodoStreamItemsStreamReturnRequest__Output as _services_todo_v1_AddTodoStreamItemsStreamReturnRequest__Output } from '../../../services/todo/v1/AddTodoStreamItemsStreamReturnRequest';
 import type { AddTodoStreamItemsStreamReturnResponse as _services_todo_v1_AddTodoStreamItemsStreamReturnResponse, AddTodoStreamItemsStreamReturnResponse__Output as _services_todo_v1_AddTodoStreamItemsStreamReturnResponse__Output } from '../../../services/todo/v1/AddTodoStreamItemsStreamReturnResponse';
+import type { AddUserRequest as _services_todo_v1_AddUserRequest, AddUserRequest__Output as _services_todo_v1_AddUserRequest__Output } from '../../../services/todo/v1/AddUserRequest';
+import type { AddUserResponse as _services_todo_v1_AddUserResponse, AddUserResponse__Output as _services_todo_v1_AddUserResponse__Output } from '../../../services/todo/v1/AddUserResponse';
 import type { GetTodoItemsRequest as _services_todo_v1_GetTodoItemsRequest, GetTodoItemsRequest__Output as _services_todo_v1_GetTodoItemsRequest__Output } from '../../../services/todo/v1/GetTodoItemsRequest';
 import type { GetTodoItemsResponse as _services_todo_v1_GetTodoItemsResponse, GetTodoItemsResponse__Output as _services_todo_v1_GetTodoItemsResponse__Output } from '../../../services/todo/v1/GetTodoItemsResponse';
 import type { GetTodoItemsStreamRequest as _services_todo_v1_GetTodoItemsStreamRequest, GetTodoItemsStreamRequest__Output as _services_todo_v1_GetTodoItemsStreamRequest__Output } from '../../../services/todo/v1/GetTodoItemsStreamRequest';
@@ -37,6 +39,15 @@ export interface TodoServiceClient extends grpc.Client {
   addTodoStreamItemsStreamReturn(metadata: grpc.Metadata, options?: grpc.CallOptions): grpc.ClientDuplexStream<_services_todo_v1_AddTodoStreamItemsStreamReturnRequest, _services_todo_v1_AddTodoStreamItemsStreamReturnResponse__Output>;
   addTodoStreamItemsStreamReturn(options?: grpc.CallOptions): grpc.ClientDuplexStream<_services_todo_v1_AddTodoStreamItemsStreamReturnRequest, _services_todo_v1_AddTodoStreamItemsStreamReturnResponse__Output>;
   
+  AddUser(argument: _services_todo_v1_AddUserRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_services_todo_v1_AddUserResponse__Output>): grpc.ClientUnaryCall;
+  AddUser(argument: _services_todo_v1_AddUserRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_services_todo_v1_AddUserResponse__Output>): grpc.ClientUnaryCall;
+  AddUser(argument: _services_todo_v1_AddUserRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_services_todo_v1_AddUserResponse__Output>): grpc.ClientUnaryCall;
+  AddUser(argument: _services_todo_v1_AddUserRequest, callback: grpc.requestCallback<_services_todo_v1_AddUserResponse__Output>): grpc.ClientUnaryCall;
+  addUser(argument: _services_todo_v1_AddUserRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_services_todo_v1_AddUserResponse__Output>): grpc.ClientUnaryCall;
+  addUser(argument: _services_todo_v1_AddUserRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_services_todo_v1_AddUserResponse__Output>): grpc.ClientUnaryCall;
+  addUser(argument: _services_todo_v1_AddUserRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_services_todo_v1_AddUserResponse__Output>): grpc.ClientUnaryCall;
+  addUser(argument: _services_todo_v1_AddUserRequest, callback: grpc.requestCallback<_services_todo_v1_AddUserResponse__Output>): grpc.ClientUnaryCall;
+  
   GetTodoItems(argument: _services_todo_v1_GetTodoItemsRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_services_todo_v1_GetTodoItemsResponse__Output>): grpc.ClientUnaryCall;
   GetTodoItems(argument: _services_todo_v1_GetTodoItemsRequest, metadata: grpc.Metadata, callback: grpc.requestCallback<_services_todo_v1_GetTodoItemsResponse__Output>): grpc.ClientUnaryCall;
   GetTodoItems(argument: _services_todo_v1_GetTodoItemsRequest, options: grpc.CallOptions, callback: grpc.requestCallback<_services_todo_v1_GetTodoItemsResponse__Output>): grpc.ClientUnaryCall;
@@ -60,6 +71,8 @@ export interface TodoServiceHandlers extends grpc.UntypedServiceImplementation {
   
   AddTodoStreamItemsStreamReturn: grpc.handleBidiStreamingCall<_services_todo_v1_AddTodoStreamItemsStreamReturnRequest__Output, _services_todo_v1_AddTodoStreamItemsStreamReturnResponse>;
   
+  AddUser: grpc.handleUnaryCall<_services_todo_v1_AddUserRequest__Output, _services_todo_v1_AddUserResponse>;
+  
   GetTodoItems: grpc.handleUnaryCall<_services_todo_v1_GetTodoItemsRequest__Output, _services_todo_v1_GetTodoItemsResponse>;
   
   GetTodoItemsStream: grpc.handleServerStreamingCall<_services_todo_v1_GetTodoItemsStreamRequest__Output, _services_todo_v1_GetTodoItemsStreamResponse>;
@@ -70,6 +83,7 @@ export interface TodoServiceDefinition extends grpc.ServiceDefinition {
   AddTodoItem: MethodDefinition<_services_todo_v1_AddTodoItemRequest, _services_todo_v1_AddTodoItemResponse, _services_todo_v1_AddTodoItemRequest__Output, _services_todo_v1_AddTodoItemResponse__Output>
   AddTodoStreamItems: MethodDefinition<_services_todo_v1_AddTodoStreamItemsRequest, _services_todo_v1_AddTodoStreamItemsResponse, _services_todo_v1_AddTodoStreamItemsRequest__Output, _services_todo_v1_AddTodoStreamItemsResponse__Output>
   AddTodoStreamItemsStreamReturn: MethodDefinition<_services_todo_v1_AddTodoStreamItemsStreamReturnRequest, _services_todo_v1_AddTodoStreamItemsStreamReturnResponse, _services_todo_v1_AddTodoStreamItemsStreamReturnRequest__Output, _services_todo_v1_AddTodoStreamItemsStreamReturnResponse__Output>
+  AddUser: MethodDefinition<_services_todo_v1_AddUserRequest, _services_todo_v1_AddUserResponse, _services_todo_v1_AddUserRequest__Output, _services_todo_v1_AddUserResponse__Output>
   GetTodoItems: MethodDefinition<_services_todo_v1_GetTodoItemsRequest, _services_todo_v1_GetTodoItemsResponse, _services_todo_v1_GetTodoItemsRequest__Output, _services_todo_v1_GetTodoItemsResponse__Output>
   GetTodoItemsStream: MethodDefinition<_services_todo_v1_GetTodoItemsStreamRequest, _services_todo_v1_GetTodoItemsStreamResponse, _services_todo_v1_GetTodoItemsStreamRequest__Output, _services_todo_v1_GetTodoItemsStreamResponse__Output>
 }

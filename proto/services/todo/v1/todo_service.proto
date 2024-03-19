@@ -5,6 +5,7 @@ syntax = "proto3";
 package services.todo.v1;
 
 service TodoService{
+    rpc AddUser(AddUserRequest) returns (AddUserResponse);
     rpc AddTodoItem(AddTodoItemRequest) returns (AddTodoItemResponse);
     rpc GetTodoItems(GetTodoItemsRequest) returns (GetTodoItemsResponse);
     rpc GetTodoItemsStream(GetTodoItemsStreamRequest) returns (stream GetTodoItemsStreamResponse);
@@ -36,7 +37,15 @@ message TodoItemResponse{
     bool is_completed = 5;
 }
 
-// rcp AddTodoItem
+// rpc AddUser
+message AddUserRequest{
+    UserRequest user = 1;
+}
+message AddUserResponse{
+    UserResponse user = 1;
+}
+
+// rpc AddTodoItem
 message AddTodoItemRequest{
     TodoItemRequest item = 1;
 }

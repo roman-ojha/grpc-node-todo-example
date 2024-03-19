@@ -18,7 +18,9 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   oneofs: true,
 });
 
-const todoGrpcObj = grpc.loadPackageDefinition(packageDefinition) as any;
+const todoGrpcObj = grpc.loadPackageDefinition(
+  packageDefinition
+) as unknown as ProtoGrpcType;
 const todoPackage = todoGrpcObj.services.todo.v1;
 
 const todoClient = new todoPackage.TodoService(
@@ -29,21 +31,37 @@ const todoClient = new todoPackage.TodoService(
 const deadline = new Date();
 deadline.setSeconds(deadline.getSeconds() + 5);
 // We will wait for the server to be ready until the deadline
-todoClient.waitForReady(deadline, (err: any) => {
+todoClient.waitForReady(deadline, (err) => {
   if (err) {
     console.error(err);
     return;
   }
 
   // Now we will call all the methods of the service here
-  todoClient.addTodoItem(
+  // todoClient.addTodoItem(
+  //   {
+  //     item: {
+  //       text: "First todo item",
+  //       user_id: 1,
+  //     } as any,
+  //   },
+  //   (err, response) => {
+  //     console.log("Response: \n" + JSON.stringify(response));
+  //   }
+  // );
+
+  todoClient.addUser(
     {
-      item: {
-        text: "First todo item",
-        user_id: 1,
+      user: {
+        email: "razz@gmail.com",
+        password: "roman123",
       },
     },
-    (err: any, response: any) => {
+    (err, response) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
       console.log("Response: \n" + JSON.stringify(response));
     }
   );
