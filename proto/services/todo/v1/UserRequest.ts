@@ -1,14 +1,12 @@
 // Original file: proto/services/todo/v1/todo_service.proto
 
 
-export interface User {
-  'id'?: (string);
+export interface UserRequest {
   'email'?: (string);
   'password'?: (string);
 }
 
-export interface User__Output {
-  'id'?: (string);
+export interface UserRequest__Output {
   'email'?: (string);
   'password'?: (string);
 }

@@ -21,9 +21,11 @@ export interface ProtoGrpcType {
         GetTodoItemsResponse: MessageTypeDefinition
         GetTodoItemsStreamRequest: MessageTypeDefinition
         GetTodoItemsStreamResponse: MessageTypeDefinition
-        TodoItem: MessageTypeDefinition
+        TodoItemRequest: MessageTypeDefinition
+        TodoItemResponse: MessageTypeDefinition
         TodoService: SubtypeConstructor<typeof grpc.Client, _services_todo_v1_TodoServiceClient> & { service: _services_todo_v1_TodoServiceDefinition }
-        User: MessageTypeDefinition
+        UserRequest: MessageTypeDefinition
+        UserResponse: MessageTypeDefinition
       }
     }
   }

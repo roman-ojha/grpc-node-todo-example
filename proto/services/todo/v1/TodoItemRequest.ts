@@ -2,10 +2,12 @@
 
 import type { Long } from '@grpc/proto-loader';
 
-export interface GetTodoItemsRequest {
+export interface TodoItemRequest {
+  'text'?: (string);
   'userId'?: (number | string | Long);
 }
 
-export interface GetTodoItemsRequest__Output {
+export interface TodoItemRequest__Output {
+  'text'?: (string);
   'userId'?: (Long);
 }

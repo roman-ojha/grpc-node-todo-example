@@ -13,54 +13,65 @@ service TodoService{
     // rpc GetAllTodoItems(google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
-message User{
-    string id = 1;
+message UserRequest {
     string email = 2;
     string password = 3;
 }
-message TodoItem{
-    string id = 1;
+
+message UserResponse {
+    int64 id = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message TodoItemRequest{
     string text = 2;
-    string user_id = 4;
+    int64 user_id = 4;
+}
+
+message TodoItemResponse{
+    int64 id = 1;
+    string text = 2;
+    int64 user_id = 4;
     bool is_completed = 5;
 }
 
 // rcp AddTodoItem
 message AddTodoItemRequest{
-    TodoItem item = 1;
+    TodoItemRequest item = 1;
 }
 message AddTodoItemResponse{
-    TodoItem item = 1;
+    TodoItemResponse item = 1;
 }
 
 // rpc GetTodoItems
 message GetTodoItemsRequest{
-    User user = 1;
+    int64 user_id = 1;
 }
 message GetTodoItemsResponse{
-    repeated TodoItem items = 1;
+    repeated TodoItemResponse items = 1;
 }
 
 // rpc GetTodoItemsStream
 message GetTodoItemsStreamRequest{
-    User user = 1;
+    int64 user_id = 1;
 }
 message GetTodoItemsStreamResponse{
-    repeated TodoItem items = 1;
+    repeated TodoItemResponse items = 1;
 }
 
 // rpc AddTodoStreamItems
 message AddTodoStreamItemsRequest{
-    TodoItem item = 1;
+    TodoItemRequest item = 1;
 }
 message AddTodoStreamItemsResponse{
-    repeated TodoItem items = 1;
+    repeated TodoItemResponse items = 1;
 }
 
 // rpc AddTodoStreamItemsResponseStream
 message AddTodoStreamItemsStreamReturnRequest{
-    TodoItem item = 1;
+    TodoItemRequest item = 1;
 }
 message AddTodoStreamItemsStreamReturnResponse{
-    TodoItem item = 1;
+    TodoItemResponse item = 1;
 }
