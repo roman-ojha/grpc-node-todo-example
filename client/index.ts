@@ -4,6 +4,7 @@ import * as grpc from "@grpc/grpc-js";
 import * as protoLoader from "@grpc/proto-loader";
 // import todoServices from "./services/todoService";
 import { ProtoGrpcType } from "../proto/todo_service";
+import TodoClient from "./services/todoClient";
 
 const PORT = process.env.SERVER_PORT || 50051;
 const PROTO_PATH = path.resolve(
@@ -38,31 +39,7 @@ todoClient.waitForReady(deadline, (err) => {
   }
 
   // Now we will call all the methods of the service here
-  // todoClient.addTodoItem(
-  //   {
-  //     item: {
-  //       text: "First todo item",
-  //       user_id: 1,
-  //     } as any,
-  //   },
-  //   (err, response) => {
-  //     console.log("Response: \n" + JSON.stringify(response));
-  //   }
-  // );
-
-  todoClient.addUser(
-    {
-      user: {
-        email: "razz@gmail.com",
-        password: "roman123",
-      },
-    },
-    (err, response) => {
-      if (err) {
-        console.log(err.message);
-        return;
-      }
-      console.log("Response: \n" + JSON.stringify(response));
-    }
-  );
+  const todo = new TodoClient(todoClient);
+  // todo.addUser();
+  todo.addTodoItem();
 });

@@ -27,14 +27,14 @@ message UserResponse {
 
 message TodoItemRequest{
     string text = 2;
-    int64 user_id = 4;
+    int64 userId = 4;
 }
 
 message TodoItemResponse{
     int64 id = 1;
     string text = 2;
-    int64 user_id = 4;
-    bool is_completed = 5;
+    int64 userId = 4;
+    bool isCompleted = 5;
 }
 
 // rpc AddUser
@@ -57,7 +57,7 @@ message AddTodoItemResponse{
 
 // rpc GetTodoItems
 message GetTodoItemsRequest{
-    int64 user_id = 1;
+    int64 userId = 1;
 }
 message GetTodoItemsResponse{
     repeated TodoItemResponse items = 1;
@@ -65,7 +65,7 @@ message GetTodoItemsResponse{
 
 // rpc GetTodoItemsStream
 message GetTodoItemsStreamRequest{
-    int64 user_id = 1;
+    int64 userId = 1;
 }
 message GetTodoItemsStreamResponse{
     repeated TodoItemResponse items = 1;
