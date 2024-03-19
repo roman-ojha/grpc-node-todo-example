@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+// import "google/protobuf/empty.proto";
+
 package services.todo.v1;
 
 service TodoService{
@@ -8,6 +10,7 @@ service TodoService{
     rpc GetTodoItemsStream(GetTodoItemsStreamRequest) returns (stream GetTodoItemsStreamResponse);
     rpc AddTodoStreamItems(stream AddTodoStreamItemsRequest) returns(AddTodoStreamItemsResponse);
     rpc AddTodoStreamItemsStreamReturn(stream AddTodoStreamItemsStreamReturnRequest) returns(stream AddTodoStreamItemsStreamReturnResponse);
+    // rpc GetAllTodoItems(google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
 message User{
