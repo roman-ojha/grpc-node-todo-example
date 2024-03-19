@@ -42,7 +42,9 @@ message AddUserRequest{
     UserRequest user = 1;
 }
 message AddUserResponse{
-    UserResponse user = 1;
+    int32 code = 1;
+    string message = 2;
+    UserResponse user = 3;
 }
 
 // rpc AddTodoItem

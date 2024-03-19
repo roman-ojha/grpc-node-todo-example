@@ -59,7 +59,7 @@ todoClient.waitForReady(deadline, (err) => {
     },
     (err, response) => {
       if (err) {
-        console.log(err);
+        console.log(err.message);
         return;
       }
       console.log("Response: \n" + JSON.stringify(response));

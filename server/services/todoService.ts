@@ -1,18 +1,27 @@
 import { UserResponse } from "proto/services/todo/v1/UserResponse";
 import { TodoServiceHandlers } from "../../proto/services/todo/v1/TodoService";
 import { db } from "../config/db";
+import { Status } from "@grpc/grpc-js/build/src/constants";
 
 const todoService: TodoServiceHandlers = {
   AddUser(call, callback) {
-    // console.log(db);
     const newUser: UserResponse = {
       id: db.users.length + 1,
       ...call.request.user,
     };
     const findUser = db.users.find((user) => user.email === newUser.email);
-    console.log(findUser);
-    // db.users.push(newUser);
-    // db.writeUser(db.users);
+    if (findUser) {
+      callback(
+        {
+          message: "User already exists",
+          code: Status.ALREADY_EXISTS,
+        },
+        null
+      );
+      return;
+    }
+    db.users.push(newUser);
+    db.writeUser(db.users);
     callback(null, {
       user: newUser,
     });
