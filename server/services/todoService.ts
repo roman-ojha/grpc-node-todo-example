@@ -1,19 +1,14 @@
-import { ServerUnaryCall, sendUnaryData } from "@grpc/grpc-js";
-import { AddTodoItemRequest } from "proto/services/todo/v1/AddTodoItemRequest";
-import { AddTodoItemResponse } from "proto/services/todo/v1/AddTodoItemResponse";
+import { TodoServiceHandlers } from "../../proto/services/todo/v1/TodoService";
 
-class TodoServices {
-  addTodoItem(
-    call: ServerUnaryCall<AddTodoItemRequest, AddTodoItemResponse>,
-    callback: sendUnaryData<AddTodoItemResponse>
-  ) {
-    // console.log(call.request);
-    // callback(null, { message: "Success" });
-  }
-  getTodoItems() {}
-  getTodoItemsStream() {}
-  addTodoStreamItems() {}
-  addTodoStreamItemsResponseStream() {}
-}
+const todoService: TodoServiceHandlers = {
+  AddTodoItem(call, callback) {
+    console.log(call.request);
+    callback(null, { item: call.request.item });
+  },
+  GetTodoItems(call, callback) {},
+  GetTodoItemsStream(call) {},
+  AddTodoStreamItems(call, callback) {},
+  AddTodoStreamItemsStreamReturn(call) {},
+};
 
-export default new TodoServices();
+export default todoService;

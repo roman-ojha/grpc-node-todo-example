@@ -25,14 +25,7 @@ const todoPackage = todoGrpcObj.services.todo.v1;
 
 const PORT = process.env.PORT || 50051;
 const server = new grpc.Server();
-server.addService(todoPackage.TodoService.service, {
-  AddTodoItem: todoServices.addTodoItem,
-  // GetTodoItems: todoServices.getTodoItems,
-  // GetTodoItemsStream: todoServices.getTodoItemsStream,
-  // addTodoStreamItems: todoServices.addTodoStreamItems,
-  // addTodoStreamItemsResponseStream:
-  //   todoServices.addTodoStreamItemsResponseStream,
-} as TodoServiceHandlers);
+server.addService(todoPackage.TodoService.service, todoServices);
 
 server.bindAsync(
   "0.0.0.0:" + PORT,
