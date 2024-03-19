@@ -1,0 +1,8 @@
+{
+  "name": "grpc-node-todo-exmaple",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/roman-ojha/grpc-node-todo-example.git",
+  "author": "Roman-Ojha <razzroman98@gmail.com>",
+  "license": "MIT"
+}
