@@ -1,5 +1,8 @@
 class TodoServices {
-  addTodoItem() {}
+  addTodoItem(call, callback) {
+    console.log(call.request);
+    callback(null, { message: "Success" });
+  }
   getTodoItems() {}
   getTodoItemsStream() {}
   addTodoStreamItems() {}

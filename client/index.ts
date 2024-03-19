@@ -1,12 +1,13 @@
-import express from "express";
+import { loadPackageDefinition, credentials } from "@grpc/grpc-js";
+import { loadSync } from "@grpc/proto-loader";
 
-const app = express();
-const PORT = 8080;
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
+const PROTO_PATH = __dirname + "/../protos/todo.proto";
+const packageDefinition = loadSync(PROTO_PATH, {
+  keepCase: true,
+  longs: String,
+  enums: String,
+  defaults: true,
+  oneofs: true,
 });
-
-app.listen(PORT, () => {
-  console.log("Server is running http://localhost:" + PORT);
-});
+const todo: any = loadPackageDefinition(packageDefinition).todo;
+const client = new todo.Todo("localhost:50051", credentials.createInsecure());

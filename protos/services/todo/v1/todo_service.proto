@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package services.todo.v1;
+
+service TodoService{
+    rpc AddTodoItem(AddTodoItemRequest) returns (AddTodoItemResponse);
+    rpc GetTodoItems(GetTodoItemsRequest) returns (GetTodoItemsResponse);
+    rpc GetTodoItemsStream(GetTodoItemsStreamRequest) returns (stream GetTodoItemsStreamResponse);
+    rpc AddTodoStreamItems(stream AddTodoStreamItemsRequest) returns(AddTodoStreamItemsResponse);
+    rpc AddTodoStreamItemsStreamReturn(stream AddTodoStreamItemsStreamReturnRequest) returns(stream AddTodoStreamItemsStreamReturnResponse);
+}
+
+message User{
+    string id = 1;
+    string email = 2;
+    string password = 3;
+}
+message TodoItem{
+    string id = 1;
+    string text = 2;
+    string user_id = 4;
+    bool is_completed = 5;
+}
+
+// rcp AddTodoItem
+message AddTodoItemRequest{
+    TodoItem item = 1;
+}
+message AddTodoItemResponse{
+    TodoItem item = 1;
+}
+
+// rpc GetTodoItems
+message GetTodoItemsRequest{
+    User user = 1;
+}
+message GetTodoItemsResponse{
+    repeated TodoItem items = 1;
+}
+
+// rpc GetTodoItemsStream
+message GetTodoItemsStreamRequest{
+    User user = 1;
+}
+message GetTodoItemsStreamResponse{
+    repeated TodoItem items = 1;
+}
+
+// rpc AddTodoStreamItems
+message AddTodoStreamItemsRequest{
+    TodoItem item = 1;
+}
+message AddTodoStreamItemsResponse{
+    repeated TodoItem items = 1;
+}
+
+// rpc AddTodoStreamItemsResponseStream
+message AddTodoStreamItemsStreamReturnRequest{
+    TodoItem item = 1;
+}
+message AddTodoStreamItemsStreamReturnResponse{
+    TodoItem item = 1;
+}

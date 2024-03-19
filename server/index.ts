@@ -6,7 +6,7 @@ import {
   ServerCredentials,
 } from "@grpc/grpc-js";
 import { loadSync } from "@grpc/proto-loader";
-import todoServices from "./services/todo";
+import todoServices from "./services/todoService";
 
 const PROTO_PATH = __dirname + "/../protos/todo.proto";
 const packageDefinition = loadSync(PROTO_PATH, {
@@ -39,5 +39,6 @@ server.bindAsync(
   ServerCredentials.createInsecure(),
   (err, port) => {
     console.log("Server running at 0.0.0.0:" + port);
+    // server.start();
   }
 );
