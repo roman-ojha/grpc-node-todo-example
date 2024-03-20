@@ -41,5 +41,7 @@ todoClient.waitForReady(deadline, (err) => {
   // Now we will call all the methods of the service here
   const todo = new TodoClient(todoClient);
   // todo.addUser();
-  todo.addTodoItem();
+  // todo.addTodoItem();
+  // todo.getTodoItems();
+  todo.getTodoItemsStream();
 });

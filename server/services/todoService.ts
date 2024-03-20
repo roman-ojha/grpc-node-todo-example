@@ -62,11 +62,31 @@ const todoService: TodoServiceHandlers = {
     db.todos.push(newTodoItem);
     db.writeTodo(db.todos);
     callback(null, {
-      item: { ...call.request.item, id: 1, isCompleted: false },
+      item: newTodoItem,
     });
   },
-  GetTodoItems(call, callback) {},
-  GetTodoItemsStream(call) {},
+  GetTodoItems(call, callback) {
+    const userId = call.request.userId;
+    callback(null, {
+      items: db.todos.filter((item) => item.userId === parseInt(userId as any)),
+    });
+  },
+  GetTodoItemsStream(call) {
+    const userId = call.request.userId;
+    const items = db.todos.filter(
+      (item) => item.userId === parseInt(userId as any)
+    );
+    let i = 0;
+    const itemInterval = setInterval(() => {
+      if (i < items.length) {
+        call.write({ item: items[i] });
+        i++;
+      } else {
+        clearInterval(itemInterval);
+        call.end();
+      }
+    }, 200);
+  },
   AddTodoStreamItems(call, callback) {},
   AddTodoStreamItemsStreamReturn(call) {},
 };

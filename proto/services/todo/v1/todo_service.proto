@@ -68,7 +68,7 @@ message GetTodoItemsStreamRequest{
     int64 userId = 1;
 }
 message GetTodoItemsStreamResponse{
-    repeated TodoItemResponse items = 1;
+    TodoItemResponse item = 1;
 }
 
 // rpc AddTodoStreamItems
