@@ -44,4 +44,5 @@ todoClient.waitForReady(deadline, (err) => {
   // todo.addTodoItem();
   // todo.getTodoItems();
   todo.getTodoItemsStream();
+  // todo.addTodoStreamItems();
 });

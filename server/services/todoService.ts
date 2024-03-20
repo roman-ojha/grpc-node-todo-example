@@ -87,7 +87,24 @@ const todoService: TodoServiceHandlers = {
       }
     }, 200);
   },
-  AddTodoStreamItems(call, callback) {},
+  AddTodoStreamItems(call, callback) {
+    let addedItems: TodoItemResponse[] = [];
+    const todoLength = db.todos.length;
+    call.on("data", ({ item }) => {
+      const newTodoItem: TodoItemResponse = {
+        id: todoLength + addedItems.length + 1,
+        isCompleted: false,
+        ...item,
+        userId: parseInt(item.userId as any),
+      };
+      addedItems.push(newTodoItem);
+    });
+    call.on("end", () => {
+      db.todos.push(...addedItems);
+      db.writeTodo(db.todos);
+      callback(null, { items: addedItems });
+    });
+  },
   AddTodoStreamItemsStreamReturn(call) {},
 };
 

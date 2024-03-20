@@ -28,7 +28,7 @@ class TodoClient {
     this.todoClient.addTodoItem(
       {
         item: {
-          text: "First todo item",
+          text: "Todo item",
           userId: 2,
         },
       },
@@ -63,6 +63,32 @@ class TodoClient {
     call.on("error", (err) => {
       console.log(err.message);
     });
+  }
+
+  addTodoStreamItems() {
+    var call = this.todoClient.addTodoStreamItems((err, response) => {
+      if (err) {
+        console.log(err.message);
+        return;
+      } else {
+        console.log(response);
+      }
+    });
+    let i = 0;
+    const itemInterval = setInterval(() => {
+      if (i < 5) {
+        call.write({
+          item: {
+            text: "Todo item",
+            userId: 2,
+          },
+        });
+        i++;
+      } else {
+        clearInterval(itemInterval);
+        call.end();
+      }
+    }, 200);
   }
 }
 
