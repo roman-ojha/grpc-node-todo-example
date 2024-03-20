@@ -90,6 +90,32 @@ class TodoClient {
       }
     }, 200);
   }
+  addTodoStreamItemsStreamReturn() {
+    var call = this.todoClient.addTodoStreamItemsStreamReturn();
+    let i = 0;
+    const itemInterval = setInterval(() => {
+      if (i < 5) {
+        call.write({
+          item: {
+            text: "Todo item",
+            userId: 2,
+          },
+        });
+        i++;
+      } else {
+        clearInterval(itemInterval);
+        call.end();
+      }
+    }, 2000);
+
+    call.on("data", (data) => {
+      console.log(data);
+    });
+
+    call.on("end", () => {
+      console.log("Stream ended");
+    });
+  }
 }
 
 export default TodoClient;

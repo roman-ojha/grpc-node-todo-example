@@ -105,7 +105,16 @@ const todoService: TodoServiceHandlers = {
       callback(null, { items: addedItems });
     });
   },
-  AddTodoStreamItemsStreamReturn(call) {},
+  AddTodoStreamItemsStreamReturn(call) {
+    call.on("data", (data) => {
+      console.log(data);
+      call.write(data);
+    });
+    call.on("end", () => {
+      console.log("Stream ended");
+      call.end();
+    });
+  },
 };
 
 export default todoService;

@@ -43,6 +43,7 @@ todoClient.waitForReady(deadline, (err) => {
   // todo.addUser();
   // todo.addTodoItem();
   // todo.getTodoItems();
-  todo.getTodoItemsStream();
+  // todo.getTodoItemsStream();
   // todo.addTodoStreamItems();
+  todo.addTodoStreamItemsStreamReturn();
 });
