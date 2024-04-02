@@ -4,85 +4,67 @@ syntax = "proto3";
 
 package services.todo.v1;
 
-service TodoService{
-    rpc AddUser(AddUserRequest) returns (AddUserResponse);
-    rpc AddTodoItem(AddTodoItemRequest) returns (AddTodoItemResponse);
-    rpc GetTodoItems(GetTodoItemsRequest) returns (GetTodoItemsResponse);
-    rpc GetTodoItemsStream(GetTodoItemsStreamRequest) returns (stream GetTodoItemsStreamResponse);
-    rpc AddTodoStreamItems(stream AddTodoStreamItemsRequest) returns(AddTodoStreamItemsResponse);
-    rpc AddTodoStreamItemsStreamReturn(stream AddTodoStreamItemsStreamReturnRequest) returns(stream AddTodoStreamItemsStreamReturnResponse);
-    // rpc GetAllTodoItems(google.protobuf.Empty) returns (google.protobuf.Empty);
+service TodoService {
+  rpc AddUser(AddUserRequest) returns (AddUserResponse);
+  rpc AddTodoItem(AddTodoItemRequest) returns (AddTodoItemResponse);
+  rpc GetTodoItems(GetTodoItemsRequest) returns (GetTodoItemsResponse);
+  rpc GetTodoItemsStream(GetTodoItemsStreamRequest)
+      returns (stream GetTodoItemsStreamResponse);
+  rpc AddTodoStreamItems(stream AddTodoStreamItemsRequest)
+      returns (AddTodoStreamItemsResponse);
+  rpc AddTodoStreamItemsStreamReturn(
+      stream AddTodoStreamItemsStreamReturnRequest)
+      returns (stream AddTodoStreamItemsStreamReturnResponse);
+  // rpc GetAllTodoItems(google.protobuf.Empty) returns (google.protobuf.Empty);
 }
 
 message UserRequest {
-    string email = 2;
-    string password = 3;
+  string email = 2;
+  string password = 3;
 }
 
 message UserResponse {
-    int64 id = 1;
-    string email = 2;
-    string password = 3;
+  int64 id = 1;
+  string email = 2;
+  string password = 3;
 }
 
-message TodoItemRequest{
-    string text = 2;
-    int64 userId = 4;
+message TodoItemRequest {
+  string text = 2;
+  int64 userId = 4;
 }
 
-message TodoItemResponse{
-    int64 id = 1;
-    string text = 2;
-    int64 userId = 4;
-    bool isCompleted = 5;
+message TodoItemResponse {
+  int64 id = 1;
+  string text = 2;
+  int64 userId = 4;
+  bool isCompleted = 5;
 }
 
 // rpc AddUser
-message AddUserRequest{
-    UserRequest user = 1;
-}
-message AddUserResponse{
-    int32 code = 1;
-    string message = 2;
-    UserResponse user = 3;
+message AddUserRequest { UserRequest user = 1; }
+message AddUserResponse {
+  int32 code = 1;
+  string message = 2;
+  UserResponse user = 3;
 }
 
 // rpc AddTodoItem
-message AddTodoItemRequest{
-    TodoItemRequest item = 1;
-}
-message AddTodoItemResponse{
-    TodoItemResponse item = 1;
-}
+message AddTodoItemRequest { TodoItemRequest item = 1; }
+message AddTodoItemResponse { TodoItemResponse item = 1; }
 
 // rpc GetTodoItems
-message GetTodoItemsRequest{
-    int64 userId = 1;
-}
-message GetTodoItemsResponse{
-    repeated TodoItemResponse items = 1;
-}
+message GetTodoItemsRequest { int64 userId = 1; }
+message GetTodoItemsResponse { repeated TodoItemResponse items = 1; }
 
 // rpc GetTodoItemsStream
-message GetTodoItemsStreamRequest{
-    int64 userId = 1;
-}
-message GetTodoItemsStreamResponse{
-    TodoItemResponse item = 1;
-}
+message GetTodoItemsStreamRequest { int64 userId = 1; }
+message GetTodoItemsStreamResponse { TodoItemResponse item = 1; }
 
 // rpc AddTodoStreamItems
-message AddTodoStreamItemsRequest{
-    TodoItemRequest item = 1;
-}
-message AddTodoStreamItemsResponse{
-    repeated TodoItemResponse items = 1;
-}
+message AddTodoStreamItemsRequest { TodoItemRequest item = 1; }
+message AddTodoStreamItemsResponse { repeated TodoItemResponse items = 1; }
 
 // rpc AddTodoStreamItemsResponseStream
-message AddTodoStreamItemsStreamReturnRequest{
-    TodoItemRequest item = 1;
-}
-message AddTodoStreamItemsStreamReturnResponse{
-    TodoItemResponse item = 1;
-}
+message AddTodoStreamItemsStreamReturnRequest { TodoItemRequest item = 1; }
+message AddTodoStreamItemsStreamReturnResponse { TodoItemResponse item = 1; }
